@@ -1,0 +1,60 @@
+.cryptoRow {
+    display: flex;
+    /*width: 500px;*/
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.cryptoName {
+    color: #11c9f4;
+}
+
+.cryptoPrice {
+    margin-left: auto;
+}
+
+.cryptoChangeGreen {
+    padding: 5px;
+    margin-left: 30px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    width: 60px;
+    text-align: right;
+    background-color:#008000;
+}
+
+.cryptoChangeRed {
+    padding: 5px;
+    margin-left: 30px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    width: 60px;
+    text-align: right;
+    background-color:#FF0000;
+}
+
+body {
+    background-image: url("../images/crypto.png");
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+ }
+
+ .cryptocurrencyHeader {
+    background-image: url("../images/cryptocurrency-header.jpg");
+    height: 100px;
+    width: 100%;
+ }
+
+.combo {
+    border-radius: 4px;
+    height: 40px;
+    width: 80px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    float: right;
+    margin-top: 50px;
+    margin-right: 16px
+}   
