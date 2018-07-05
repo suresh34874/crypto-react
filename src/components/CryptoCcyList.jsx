@@ -4,7 +4,9 @@ import {connect} from 'react-redux';
 
 import mockData from '../api/data';
 import {getCryptoData} from '../api/api';
+import {fetchCryptoData} from '../redux/action';
 const css = require('./CryptoCcyList.css');
+
 
 class CryptoCcyList extends Component {
     constructor() {
@@ -14,39 +16,16 @@ class CryptoCcyList extends Component {
             currency:{key:'SGD',value:'price_sgd'}
         };
         this.changeCurrency = this.changeCurrency.bind(this);
-        //getCryptoData().then(res=>{this.setState({ currencyData:res})});
-        getCryptoData().then(res=>{
-            this.props.reduxDispatch({
-                type:'SGD',
-                currency:'SGD',
-                currencyData:res
-            })
-        });
     }
+    
 
     changeCurrency(event){
-        //let key = event.target.selectedOptions[0].innerText;
         let type = event.target.value;
-        //console.log(key+": "+value);
-        getCryptoData(type).then(res=>{
-           /* this.setState({
-                currency:{
-                    key:key,
-                    value:value
-                },
-                currencyData:res
-                });*/
-            this.props.reduxDispatch({
-                type:type,
-                currency:type,
-                currencyData:res
-            })
-        });
+        this.props.dispatch(fetchCryptoData(type));
     }
 
     render() {
         const {reduxState:{currencyData,currency,key}}=this.props;
-        //const {state:{currencyData,currency:{key,value}}}=this;
         return (<div>
             <div className = {css.cryptocurrencyHeader}>
             <select className = {css.combo} onChange={this.changeCurrency}>
@@ -66,6 +45,11 @@ class CryptoCcyList extends Component {
             </div>
             ))}
         </div>);
+    }
+
+
+    componentWillMount(){
+        this.props.dispatch(fetchCryptoData("SGD"));
     }
 
     componentDidMount(){
@@ -90,4 +74,4 @@ const mapDispatchToProps = dispatch => {
     return {reduxDispatch:dispatch};
   }
 
-export default connect(mapStateToProps,mapDispatchToProps)(CryptoCcyList);
+export default connect(mapStateToProps)(CryptoCcyList);
